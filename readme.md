@@ -1,0 +1,1 @@
+npm i express cors morgan dotnex nodemon

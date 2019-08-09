@@ -10,7 +10,7 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(cors());
 
-app.get('/videos', (req, res) => {
+app.get('/albums', (req, res) => {
     fetch(url)
     .then(response => response.json())
     .then(json => {

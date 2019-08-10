@@ -11,6 +11,7 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 app.get('/albums', (req, res) => {
+    const url = "http://api.discogs.com/users/k.miller/collection/folders/0/releases?per_page=200"
     fetch(url)
     .then(response => response.json())
     .then(json => {
@@ -25,7 +26,7 @@ function notFound(req, res, next) {
     next(error);
 }
 
-function errorHandloer(error, req, res, next) {
+function errorHandler(error, req, res, next) {
     res.status(res.statusCode || 500);
     res.json({
         message: error.message
@@ -33,7 +34,7 @@ function errorHandloer(error, req, res, next) {
 }
 
 app.use(notFound);
-app.use(errorHandloer);
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
